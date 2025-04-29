@@ -24,27 +24,34 @@ int main() {
         printf ("%2d" , linha++);
         for (int j = 0; j < colunas; j++){
             tabuleiro [i] [j] = 0 ; // Inicializando em 0
-            for (int i = 0; i < 1; i ++){ //Posicionando o primeiro navio em E1, F1 e G1
-                for (int j = 4 ; j < 7 ; j++ ){
-             tabuleiro [i] [j] = 3;
+            for (int i = 0; i <= 2; i ++){ //Posicionando o primeiro ataque (cone) representado pelo numero 1
+                for (int j = 2 - i ; j <=2 ; j++ ){
+             tabuleiro [i] [j] = 1;
                 }
             }
-            for (int i = 1; i < 4; i ++){ //Posicionando o segundo navio em B2, B3 e B4
-                for (int j = 1 ; j < 2 ; j++ ){
-             tabuleiro [i] [j] = 3;
-                }
+                 for (int i = 2 ; i > 0 ; i--){
+                    for (int j = 2 + i ;j > 2 ; j--)
+                    tabuleiro [i] [j] = 1 ;
             }
-           if (i == j){ //Posicionando o Terceiro navio em H8 , I9 e j10
-            for (int i = 7 ; i <= 9; i ++ ){
-            tabuleiro [i] [j] = 3 ;
+            for (int i = 8 ; i > 7 ; i--){ // Posicionando o segundo ataque (cruz) representado pelo numero 2
+                for (int j = 5 ; j < 10 ; j++)
+                tabuleiro [i] [j ] = 2 ;
             }
-                }
-
-            if ( i + j == 8){ //Posicionando o Quarto navio em D6 , C7 e B8
-            for (int i = 7 ; i > 4 ; i -- ){
-            tabuleiro [i] [j] = 3 ;
+                    for (int i = 9 ; i > 6 ; i--){
+                        for (int j = 7 ; j > 6 ; j--)
+                        tabuleiro [i] [j ] = 2 ;
+                    }
+             for (int i = 6 ; i > 5 ; i--){ // Posicionando o terceiro ataque (octaedro) representado pelo numero 3
+                for (int j = 0 ; j < 3 ; j++)
+                tabuleiro [i] [j ] = 3 ;
             }
-                }
+                    for (int i = 7 ; i > 4 ; i--){
+                        for (int j = 1 ; j > 0 ; j--)
+                        tabuleiro [i] [j ] = 3 ;
+                    }
+            
+        
+           
            
 
             printf (" %d" , tabuleiro [i] [j]); //Imprime o tabuleiro na tela
